@@ -1,6 +1,8 @@
 package com.globalhiddenodds.ionixredditevaluation
 
 import com.globalhiddenodds.ionixredditevaluation.datasource.network.NewsCloudService
+import com.globalhiddenodds.ionixredditevaluation.workers.getChildCloud
+import com.globalhiddenodds.ionixredditevaluation.workers.getPosting
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.runBlocking
@@ -49,8 +51,10 @@ class CloudServiceTest {
         val response = cloudService.getNews("")
 
         @Suppress("UNCHECKED_CAST")
-        val jsonMap: Map<String?, Any> = response as Map<String?, Any>
-        assert(jsonMap.isNotEmpty())
+        val jsonMap: MutableMap<String?, Any> = response as MutableMap<String?, Any>
+        val child = getChildCloud(jsonMap)
+        val listPost = getPosting(child)
+        assert(listPost.isNotEmpty())
     }
 
     @Test

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Ionix Reddit Evaluation</string>
+    <string name="lbl_down_news">Download News</string>
+    <string name="lbl_filter_news">Filter news</string>
 </resources>
