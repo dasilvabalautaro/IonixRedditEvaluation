@@ -9,7 +9,6 @@ import retrofit2.http.Path
 
 private const val baseUrl = "https://www.reddit.com/r/chile"
 
-//new/.json?limit=1000
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
@@ -24,6 +23,7 @@ interface NewsCloudService {
     suspend fun getNews(@Path("param") param: String): Any
 }
 
+// Pattern singleton
 object NewsCloud {
     val retrofitService: NewsCloudService by lazy {
         retrofit.create(NewsCloudService::class.java)
