@@ -3,7 +3,7 @@ package com.globalhiddenodds.ionixredditevaluation.datasource.database.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.globalhiddenodds.ionixredditevaluation.datasource.network.data.PostingCloud
+import com.globalhiddenodds.ionixredditevaluation.ui.data.PostingView
 
 @Entity(tableName = "posting")
 data class Posting(
@@ -17,8 +17,10 @@ data class Posting(
     @ColumnInfo(name = "score")
     val score: Double,
     @ColumnInfo(name = "comments")
-    val comments: Double)
+    val comments: Double
+)
 
-fun Posting.toPostingCloud():
-        PostingCloud = PostingCloud(
-    idPost, title, url, score, comments)
+fun Posting.toPostingView():
+        PostingView = PostingView(
+    id, idPost, title, url, score, comments
+)

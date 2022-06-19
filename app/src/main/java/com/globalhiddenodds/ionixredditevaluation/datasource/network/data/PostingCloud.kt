@@ -12,4 +12,5 @@ data class PostingCloud(
     fun toPosting(): Posting {
         return Posting(0, idPost, title, url, score, comments)
     }
+
 }
