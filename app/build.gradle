@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-    id 'androidx.navigation.safeargs.kotlin'
+    //id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -31,6 +31,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        useIR = true
         freeCompilerArgs = ["-Xallow-result-return-type"]
     }
 
@@ -39,7 +40,11 @@ android {
     useLibrary 'android.test.mock'
 
     buildFeatures {
-        dataBinding true
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion "${compose_version}"
     }
 
     kapt {
@@ -57,7 +62,23 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // Compose
+    implementation "androidx.compose.runtime:runtime:$compose_version"
+    implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.foundation:foundation:$compose_version"
+    implementation "androidx.compose.foundation:foundation-layout:$compose_version"
+    implementation 'androidx.activity:activity-compose:1.4.0'
+    implementation "androidx.compose.material:material:$compose_version"
+    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
+    implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
+    implementation "com.github.skydoves:landscapist-coil:1.5.2"
+    //implementation "io.coil-kt:coil-compose:2.0.0"
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+
+    implementation "com.google.android.material:compose-theme-adapter:1.1.5"
 
     //Room
     implementation 'androidx.room:room-runtime:2.4.2'
@@ -93,7 +114,7 @@ dependencies {
     //Work
     implementation "androidx.work:work-runtime-ktx:2.7.1"
 
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.7.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.10'
 
     //Instrumented unit test
     androidTestImplementation "junit:junit:4.13.2"
