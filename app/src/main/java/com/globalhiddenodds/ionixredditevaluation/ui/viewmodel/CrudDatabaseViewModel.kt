@@ -45,7 +45,9 @@ class CrudDatabaseViewModel @Inject constructor(
             if (FilterNewsWorker.listPostingCloud.isNotEmpty() &&
                     !handle.getLiveData<Boolean>(viewStatus).value!!){
                 handle[viewStatus] = true
-                val result = crudDatabaseUseCase.insertPosting()
+                var result = crudDatabaseUseCase.cleanDatabase()
+                taskResultMutableLive.value = "Delete Posting: $result"
+                result = crudDatabaseUseCase.insertPosting()
                 taskResultMutableLive.value = "Insert Posting: $result"
             }
         }

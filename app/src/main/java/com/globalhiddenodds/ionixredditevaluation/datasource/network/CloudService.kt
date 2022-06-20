@@ -5,9 +5,8 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Path
 
-private const val baseUrl = "https://www.reddit.com/r/chile"
+private const val baseUrl = "https://www.reddit.com/r/chile/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -19,8 +18,8 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface NewsCloudService {
-    @GET("new/{param}")
-    suspend fun getNews(@Path("param") param: String): Any
+    @GET("new/.json?limit=1000")
+    suspend fun getNews(): Any
 }
 
 // Pattern singleton

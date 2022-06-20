@@ -2,4 +2,8 @@
     <string name="app_name">Ionix Reddit Evaluation</string>
     <string name="lbl_down_news">Download News</string>
     <string name="lbl_filter_news">Filter news</string>
+    <string name="lbl_task_down_finish">Task Download Finished</string>
+    <string name="lbl_down_failed">Download news failed</string>
+    <string name="lbl_show_less">Show less</string>
+    <string name="lbl_show_more">Show more</string>
 </resources>
