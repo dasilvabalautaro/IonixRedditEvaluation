@@ -7,10 +7,12 @@ data class PostingCloud(
     val title: String,
     val url: String,
     val score: Double,
-    val comments: Double
+    val comments: Double,
+    var base64: String = ""
 ) {
     fun toPosting(): Posting {
-        return Posting(0, idPost, title, url, score, comments)
+        return Posting(0, idPost, title,
+            url, score, comments, base64)
     }
 
 }

@@ -16,7 +16,6 @@ fun makeStatusNotification(message: String, context: Context) {
     val channel = NotificationChannel(CHANNEL_ID, name, importance)
     channel.description = description
 
-    // Add the channel
     val notificationManager =
         context.getSystemService(
             Context.NOTIFICATION_SERVICE
@@ -24,7 +23,6 @@ fun makeStatusNotification(message: String, context: Context) {
 
     notificationManager?.createNotificationChannel(channel)
 
-    // Create the notification
     val builder = NotificationCompat.Builder(context, CHANNEL_ID)
         .setSmallIcon(R.drawable.ic_launcher_foreground)
         .setContentTitle(NOTIFICATION_TITLE)
@@ -32,7 +30,6 @@ fun makeStatusNotification(message: String, context: Context) {
         .setPriority(NotificationCompat.PRIORITY_HIGH)
         .setVibrate(LongArray(0))
 
-    // Show the notification
     NotificationManagerCompat.from(context)
         .notify(NOTIFICATION_ID, builder.build())
 }

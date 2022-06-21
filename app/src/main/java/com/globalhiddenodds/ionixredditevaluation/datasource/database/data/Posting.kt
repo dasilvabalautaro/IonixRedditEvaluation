@@ -17,10 +17,12 @@ data class Posting(
     @ColumnInfo(name = "score")
     val score: Double,
     @ColumnInfo(name = "comments")
-    val comments: Double
+    val comments: Double,
+    @ColumnInfo(name = "base64")
+    val base64: String
 )
 
 fun Posting.toPostingView():
         PostingView = PostingView(
-    id, idPost, title, url, score, comments
-)
+    id, idPost, title,
+    url, score, comments, base64)
