@@ -6,4 +6,5 @@ class PostingView(
     val title: String,
     val url: String,
     val score: Double,
-    val comments: Double)
+    val comments: Double,
+    var base64: String)

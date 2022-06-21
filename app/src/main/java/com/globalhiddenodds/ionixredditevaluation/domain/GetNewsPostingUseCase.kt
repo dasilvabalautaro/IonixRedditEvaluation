@@ -12,7 +12,7 @@ class GetNewsPostingUseCase @Inject constructor(
     @ApplicationContext val context: Context) {
     private val workManager = WorkManager.getInstance(context)
     val workInfo: LiveData<List<WorkInfo>> = workManager
-        .getWorkInfosByTagLiveData(TAG_FILTER)
+        .getWorkInfosByTagLiveData(TAG_TRANSFORM_IMAGE)
 
     fun downPosting(){
         val constraints = Constraints.Builder()
@@ -24,12 +24,19 @@ class GetNewsPostingUseCase @Inject constructor(
             .setConstraints(constraints)
             .addTag(TAG_FILTER)
             .build()
+        val transformUrl = OneTimeWorkRequest
+            .Builder(Image64Worker::class.java)
+            .setConstraints(constraints)
+            .addTag(TAG_TRANSFORM_IMAGE)
+            .build()
+
         workManager.beginUniqueWork(
             DOWNLOAD_POSTS_WORK_NAME, ExistingWorkPolicy.KEEP,
             OneTimeWorkRequest.Builder(DownNewsWorker::class.java)
                 .setConstraints(constraints)
                 .addTag(TAG_DOWN)
-                .build()).then(filterNewsRequest).enqueue()
+                .build()).then(filterNewsRequest)
+                .then(transformUrl).enqueue()
     }
 
     internal fun cancelWork(){

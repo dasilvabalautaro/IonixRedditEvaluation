@@ -6,4 +6,5 @@
     <string name="lbl_down_failed">Download news failed</string>
     <string name="lbl_show_less">Show less</string>
     <string name="lbl_show_more">Show more</string>
+    <string name="lbl_url_to_image">Transform URL</string>
 </resources>
