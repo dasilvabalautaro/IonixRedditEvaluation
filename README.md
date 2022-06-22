@@ -14,3 +14,13 @@ Es una aplicación mobile para la tecnología Android.
 Arquitectura Layers.
 
 Los patrones de diseño se especifican en cada Layer y componente.
+
+OBSERVACIONES A LAS ESPECIFICACIONES:
+
+1.- Para el segundo punto se indica "Como en el primer punto, debes mostrar la misma información. ", pero no se especifica los filtros. Empezamos suponiendo que son igual al primer punto, es decir, link_flair_text: Shitposting y post_hint: image. En esta suposición cuando se utiliza la url de búsqueda: https://www.reddit.com/r/chile/search.json?q=(búsqueda)&limit=1000 casi no arroja ningún resultado, no satisfacen los dos filtros. En ese sentido hacer búsquedas termina siendo algo ocioso. la aplicación sólo utiliza el filtro post_hint: image para que pueda mostrar resultados de acuerdo a las especificaciones.
+
+2.- Sobre la configuración y los permisos: se indica: "Necesitamos una vista de carga para la configuración necesaria (Splash) y una vista para solicitar al usuario permisos (Configuración) como cámara, escritura, gps, etc. los que gustes", de acuerdo a los requerimientos los permisos que exige esta oración no tienen sentido, permiso para camara...?, permiso para gps...?. En el desarrollo de software existen ciertos criterios muy validos, uno de ellos, es no añadir funcionalidad que no esta especificada. Métodos que no se utilizan, violentan el principio Interface Segregation Principle, SOLID, donde claramente indica que cada clase implementa las interfaces que necesite y use, NINGUNA MÁS. La aplicación sólo necesita permiso de acceso a INTERNET y al estado de la red.  
+
+3.- Sobre "Manejo Online/Offline": para el punto dos no puede haber Offline porque el patrón de búsqueda es muy variable y hacemos consultas a una base de datos que no manejamos. Si la base de datos fuese nuestra es posible. Sobre qué criterios podríamos almacenar en nuestro repositorio, en el mejor de los casos sobre parámetros muy abstractos, tan así, que no podriamos saber cuales. En este sentido las consultas se realizan en tiempo real y necesariamente con conexión.
+
+4.- Para finalizar espero una crítica detallada al igual que el punto "¿Qué tomamos en cuenta?", me parece que la discusión será muy provechosa. 
