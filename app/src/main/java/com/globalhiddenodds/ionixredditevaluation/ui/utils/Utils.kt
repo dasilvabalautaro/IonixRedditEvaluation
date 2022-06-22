@@ -6,14 +6,12 @@ import android.graphics.BitmapFactory
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Base64
-import android.util.Log
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import java.io.ByteArrayOutputStream
 
 // Pattern singleton
 object Utils {
-    fun notify(context: Context, message: String){
+    fun notify(context: Context, message: String) {
         val appContext = context.applicationContext ?: return
         Toast.makeText(appContext, message, Toast.LENGTH_LONG).show()
     }
@@ -41,7 +39,7 @@ object Utils {
                 activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
                 else -> false
             }
-        } catch (e: Exception){
+        } catch (e: Exception) {
             return false
         }
     }

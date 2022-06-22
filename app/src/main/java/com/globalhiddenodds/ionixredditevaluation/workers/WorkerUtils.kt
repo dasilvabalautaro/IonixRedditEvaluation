@@ -68,3 +68,20 @@ fun getPosting(array: ArrayList<Map<String?, Any>>): MutableList<PostingCloud>{
     }
     return listPosting
 }
+
+@Suppress("UNCHECKED_CAST")
+fun getPostHintSearch(array: ArrayList<Map<String?, Any>>): MutableList<PostingCloud>{
+    val listPosting = mutableListOf<PostingCloud>()
+    array.forEach {
+        val dataChild = it[KEY_DATA] as Map<String?, Any>
+        if (dataChild[KEY_POST] == VALUE_IMAGE){
+            val postingCloud = PostingCloud(dataChild[KEY_ID_POST] as String,
+                dataChild[KEY_TITLE] as String,
+                dataChild[KEY_URL] as String,
+                dataChild[KEY_SCORE] as Double,
+                dataChild[KEY_COMMENTS] as Double)
+            listPosting.add(postingCloud)
+        }
+    }
+    return listPosting
+}

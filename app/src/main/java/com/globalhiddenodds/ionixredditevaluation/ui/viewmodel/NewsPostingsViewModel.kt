@@ -16,12 +16,20 @@ class NewsPostingsViewModel @Inject constructor(
     private val handle: SavedStateHandle,
     private val getNewsPostingUseCase: GetNewsPostingUseCase
 ) : ViewModel() {
-
+    private val viewStatus = "VIEW_STATUS_DOWN"
     val outputWorkInfo: LiveData<List<WorkInfo>> = getNewsPostingUseCase.workInfo
+    val status: LiveData<Boolean> by lazy { handle.getLiveData(viewStatus) }
+
+    init {
+        handle[viewStatus] = false
+    }
 
     fun downPosting() {
         viewModelScope.launch {
-            getNewsPostingUseCase.downPosting()
+            if (!handle.getLiveData<Boolean>(viewStatus).value!!) {
+                getNewsPostingUseCase.downPosting()
+                handle[viewStatus] = true
+            }
         }
     }
 

@@ -48,7 +48,7 @@ class CloudServiceTest {
                 .setResponseCode(HttpURLConnection.HTTP_OK)
                 .setBody(FileReader.readStringFromFile("success_response.json"))
         )
-        val response = cloudService.getNews("")
+        val response = cloudService.getNews()
 
         @Suppress("UNCHECKED_CAST")
         val jsonMap: MutableMap<String?, Any> = response as MutableMap<String?, Any>
