@@ -1,7 +1,6 @@
 package com.globalhiddenodds.ionixredditevaluation.domain
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.distinctUntilChanged
 import com.globalhiddenodds.ionixredditevaluation.datasource.database.data.Posting
@@ -10,8 +9,6 @@ import com.globalhiddenodds.ionixredditevaluation.repository.PostingDao
 import com.globalhiddenodds.ionixredditevaluation.workers.DownNewsWorker
 import com.globalhiddenodds.ionixredditevaluation.workers.FilterNewsWorker
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 

@@ -18,7 +18,7 @@ class CrudDatabaseViewModel @Inject constructor(
     private val crudDatabaseUseCase: CrudDatabaseUseCase,
     @IoDispatcher val ioDispatcher: CoroutineDispatcher
 ): ViewModel() {
-    private val viewStatus = "VIEW_STATUS_DOWN"
+    private val viewStatus = "VIEW_STATUS_INSERT"
     private val taskResultMutableLive = MutableLiveData<String>()
     val taskResult: LiveData<String> = taskResultMutableLive
     val listPosting: LiveData<List<PostingView>> by lazy {

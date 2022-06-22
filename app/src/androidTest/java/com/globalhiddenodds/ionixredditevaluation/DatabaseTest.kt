@@ -45,7 +45,7 @@ class DatabaseTest {
     @Test
     fun insertPosting() = runTest {
         val post = Posting(1, "vcx", "Cursed",
-            "https://i.redd.it/uz7uktmik7691.jpg", 124.0, 1.0)
+            "https://i.redd.it/uz7uktmik7691.jpg", 124.0, 1.0, "1qwertynnfg")
         postingDao.insert(post)
         val postInserted = postingDao.getPosting()
             .asLiveData().getOrAwaitValue()
